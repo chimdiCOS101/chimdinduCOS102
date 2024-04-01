@@ -25,6 +25,7 @@ elif choice == 3:
     print("FORMULA FOR ANNUITY PLAN PMT= [(1 + R/n)exp of nt - 1]/ R/n")
     n = int(input("what is the value of 'n' in the formula above? "))
     PMT = ((1 + rate/n) ** (n * time) - 1) / (rate / n)
+    print(PMT)
 else:
     print("ERROR")
 

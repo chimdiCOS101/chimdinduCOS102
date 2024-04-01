@@ -1,0 +1,1 @@
+# python program to print strings and type
