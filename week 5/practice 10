@@ -1,0 +1,26 @@
+#Importing tkinter: The code starts by importing the tkinter module with the alias tk. Tkinter is a standard GUI (Graphical User Interface) library for Python, and tk is a commonly used alias for it.
+import tkinter as tk
+#Importing messagebox: The code imports the messagebox submodule from tkinter with the alias msgbox. The messagebox submodule provides methods to create various types of message boxes such as informational, warning, error, etc.
+from tkinter import messagebox as msgbox
+#Defining the button_click function: This function is executed when the button is clicked. It prints "button clicked" to the console, displays an informational message box with the title "Info" and the message "Welcome to COS102 GUI app", and then prompts the user with a yes/no message box with the title "confirmation" and the message "do you want to continue".
+
+
+def button_click():
+    print("button clicked")
+    msgbox.showinfo("Info", "Welcome to COS102 GUI app\n")
+    
+    result = msgbox.askyesno("confirmation", "do you want to continue")
+ #The title of the root window is set to "Home page", and its initial size is set to 300x100 pixels.
+ #A label widget with the text "Hello friend" is created and added to the root window using the pack() method.
+root = tk.Tk()
+root.title("Home page")
+root.geometry("300x100")
+
+label = tk.Label(root, text = "Hello friend")
+label.pack()
+
+button = tk.Button(root, text ="click me!",  command=button_click)
+button.pack()
+#Customizing the button: The foreground (text color) of the button is set to red (fg="red") and the background color is set to yellow (bg="yellow").
+button.config(fg="red", bg="yellow")
+root.mainloop()
