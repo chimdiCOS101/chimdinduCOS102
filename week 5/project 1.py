@@ -10,22 +10,30 @@ def intro(name):
     labael_1.pack()
 
 def confirm():
+    f_name= name_entry.get()
+    dept = dept_entry.get()
     with open('GIG-logistics.csv', 'r') as file:
-    names = 
+        reader = csv.reader(file)
+        for row in reader:
+            if f_name in row and dept in row:
+                intro(f_name)
+            else:
+                mssgebx.showerror("error", "wrong name or department")
 
 root= tk.Tk()
 root.title("Login to database")
 root.geometry("400x200")
 
-name_label = tk.Label(root, text="Username:")
+dept_label = tk.Label(root, text="Department:")
+dept_label.pack()
+dept_entry = tk.Entry(root)
+dept_entry.pack()
+
+name_label = tk.Label(root, text="First Name:")
 name_label.pack()
-name_entry = tk.Entry(root)
+name_entry = tk.Entry(root)  
 name_entry.pack()
 
-password_label = tk.Label(root, text="Password:")
-password_label.pack()
-password_entry = tk.Entry(root, show="*")  
-password_entry.pack()
-
-
-done = tk.Button(root, text = "done")
+enter_button = tk.Button(root, text = "enter", command= confirm )
+enter_button.pack()
+root.mainloop()
