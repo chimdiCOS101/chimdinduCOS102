@@ -1,8 +1,38 @@
-,MatNo,Name,Age,Grade
-4,1814,Mary Akande,20,87
-6,1816,Gabriel Pati,18,50
-12,1822,Glory Babalola,21,69
-14,1824,Godwin Osahon,20,51
-15,1825,Philip Odion,19,68
-17,1827,Igor Lawal,20,55
-20,1830,Gbemisola Adewale,21,80
+create_db_query = sql.SQL("CREATE DATABASE cos_102")
+cursor.execute(create_db_query)
+
+create_table_query = """
+CREATE TABLE paystack_TEAM (
+    name VARCHAR(50) NOT NULL,
+    division VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    module INT NOT NULL);
+"""
+cursor.execute(create_table_query)
+print("table creation success")
+
+
+name = [ "Oyinda Aina","Wale Eseyin","Khadijah Abu","Onyekachi Mbaike","Seike Ibojo","Opemipo Aikomo","Ezra Olubi","Alexander Fasoro","Stephen Amaza","Loknan Nanyak","Ibrahim Lawal","Fisayo Kolawole","Emmanuel Quartey","Awatt Bassey","Bolaji Akande","Mohini Ufeli","King Makanjuola","Ijeoma Opara","Dipo Omobomi","Dapo Awobokun","Charles Idem","Ayobami Alo","Aminat Badara"]
+
+age = [32,28,30,37,33,28,30,35,40,44,39,27,31,32,30,29,31,26,32,35,38,34,30]
+
+division = ["Business","Engineering","Product","Design","Growth","Design","Product","Engineering","Growth","Engineering","Engineering","Commercial","Growth","Growth","Revenue","Growth","Product","Revenue","Product","Revenue","Revenue","Product","Growth","Team"]
+
+module = [1,3,2,5,4,1,3,1,2,5,4,5,1,2,3,1,4,2,5,3,1,4,2]
+
+
+
+insert_query = """
+INSERT INTO paystack_TEAM (name, division, age, module)
+VALUES (%s,%s,%s,%s);
+"""
+
+count = 0
+for i in len(age):
+    count += 1
+    data_to_insert = (name[count], str(age[count]), division[count], str(module[count]))
+    cursor.execute(data_to_insert )
+print("table filled succesfully")
+
+cursor.close()
+connection.close()
